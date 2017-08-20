@@ -7,7 +7,7 @@ app.use(morgan('combined'));
 
 var articles = {
 
-    'article1' : {
+    'article-one' : {
     	title: 'Article 1',
     	heading: 'Article 1',
     	content: `<p>This is a test. This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
