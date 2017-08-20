@@ -5,12 +5,46 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var article1 = {
+	title: article1;
+	heading: article1;
+	content: '<p>This is a test. This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+
+		<div>
+			<p>This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+		</div>'
+};
+function createTemp(data) {
+	var title= data.title;
+	var heading= data.heading;
+	var content= data.content;
+	var htmlTemp = {'
+		<html>
+		<head>
+			<title>${title}</title>
+			<link rel="stylesheet" type="text/css" href="/style.css">
+		</head>
+		<body>
+			<div class="container">
+				<h1>${heading}</h1>
+				<hr>
+			<div>
+			<a href="/">Home</a>
+			</div>
+				${content}
+			</div>
+		</body>
+		</html>
+		'
+	}
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article1', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+  res.send(createTemp(article1));
 });
 
 app.get('/article2', function (req, res) {
