@@ -67,7 +67,7 @@ app.get('/', function (req, res) {
 
 app.get('/:articleName', function (req, res) {
   res.send(createTemp(articles[articleName]));
-  articleName=req.params.articleName;
+  var articleName=req.params.articleName;
 });
 
 
