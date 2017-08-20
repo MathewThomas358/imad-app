@@ -57,7 +57,7 @@ function createTemp (data) {
 			</div>
 		</body>
 		</html>
-		`
+		`;
 	return htmlTemp;
 }
 
