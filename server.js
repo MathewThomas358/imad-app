@@ -5,20 +5,42 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var article1 = {
-	title: article1;
-	heading: article1;
-	content: '<p>This is a test. This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+var articles = {
 
-		<div>
-			<p>This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
-		</div>'
+    'article1' : {
+    	title: 'Article 1',
+    	heading: 'Article 1',
+    	content: `<p>This is a test. This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+    
+    		<div>
+    			<p>This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+    		</div>`
+    },
+    'article2' : {
+        title: 'Article 2',
+    	heading: 'Article 2',
+    	content: `<p>This is a test. This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+    
+    		<div>
+    			<p>This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+    		</div>`
+    },
+    'article3' : {
+        title: 'Article 3',
+    	heading: 'Article 3',
+    	content: `<p>This is a test. This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+    
+    		<div>
+    			<p>This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</p>
+    		</div>`
+    },
+    
 };
 function createTemp(data) {
 	var title= data.title;
 	var heading= data.heading;
 	var content= data.content;
-	var htmlTemp = {'
+	var htmlTemp = `
 		<html>
 		<head>
 			<title>${title}</title>
@@ -35,25 +57,17 @@ function createTemp(data) {
 			</div>
 		</body>
 		</html>
-		'
-	}
+		`
+	return htmlTemp;
 }
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article1', function (req, res) {
-  res.send(createTemp(article1));
-});
-
-app.get('/article2', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-
-app.get('/article3', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article_three.html'));
+app.get('/:articleName', function (req, res) {
+  res.send(createTemp(articles[articleName]));
+  articleName=req.params.articleName;
 });
 
 
